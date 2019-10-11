@@ -1,0 +1,14 @@
+name: Publish Docker
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@2.6
+      with:
+        name: celtra/vividcortex
+        username: celtra
+        password: ${{ secrets.GITHUB_REGISTRY_ACCESS_TOKEN }}
+        registry: docker.pkg.github.com
